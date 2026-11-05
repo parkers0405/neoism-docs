@@ -1,5 +1,5 @@
 import { copyFileSync, cpSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
-import { resolve, relative } from 'node:path';
+import { resolve, relative, sep } from 'node:path';
 import { generateBundle, root, sha256 } from './content-bundle.mjs';
 import { dependencyNotices } from './licenses.mjs';
 
@@ -19,7 +19,7 @@ function inventory(dir) {
   for (const name of readdirSync(dir).sort()) {
     const path = resolve(dir, name);
     if (statSync(path).isDirectory()) inventory(path);
-    else { const bytes = readFileSync(path); files[relative(dist, path)] = { bytes: bytes.length, sha256: sha256(bytes) }; }
+    else { const bytes = readFileSync(path); files[relative(dist, path).split(sep).join('/')] = { bytes: bytes.length, sha256: sha256(bytes) }; }
   }
 }
 inventory(dist);
