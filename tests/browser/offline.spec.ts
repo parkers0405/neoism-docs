@@ -6,6 +6,12 @@ test('packaged handbook, search, legacy links and Scalar work without external r
   const external: string[] = [];
   const failures: string[] = [];
   page.on('pageerror', error => failures.push(error.message));
+  await page.addInitScript(() => {
+    (window as unknown as { cspViolations: string[] }).cspViolations = [];
+    document.addEventListener('securitypolicyviolation', event => {
+      (window as unknown as { cspViolations: string[] }).cspViolations.push(`${event.effectiveDirective}: ${event.blockedURI}`);
+    });
+  });
   await page.route('**/*', route => {
     if (new URL(route.request().url()).hostname !== '127.0.0.1') { external.push(route.request().url()); return route.abort(); }
     return route.continue();
@@ -24,6 +30,7 @@ test('packaged handbook, search, legacy links and Scalar work without external r
   await page.waitForTimeout(1000);
   expect(external).toEqual([]);
   expect(failures).toEqual([]);
+  expect(await page.evaluate(() => (window as unknown as { cspViolations: string[] }).cspViolations)).toEqual([]);
 });
 test('static pages, reference, artifact hashes and machine content survive without JS', async ({ browser, request }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });

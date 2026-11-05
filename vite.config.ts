@@ -4,6 +4,7 @@ export default defineConfig({
   plugins: [staticDocsPlugin()],
   server: { cors: false },
   build: {
+    target: 'es2022',
     assetsDir: 'docs-assets',
     rollupOptions: { input: 'api/docs/index.html' },
   },

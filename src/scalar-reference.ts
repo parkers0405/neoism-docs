@@ -1,7 +1,12 @@
-import { createApiReference } from '@scalar/api-reference';
+import { config } from 'zod/v4/core';
 import '@scalar/api-reference/style.css';
 import './scalar-reference.css';
 import contract from '../reference/openapi.json';
+
+// Configure Zod before importing Scalar and constructing any of its schemas.
+// Even a caught eval probe creates a violation under strict script-src CSP.
+config({ jitless: true });
+const { createApiReference } = await import('@scalar/api-reference');
 
 const labels: Record<string, string> = {
   system: 'System', plugins: 'Plugins', events: 'Events', sessions: 'Sessions',

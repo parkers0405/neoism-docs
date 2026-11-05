@@ -15,6 +15,7 @@ createServer((req, res) => {
       path = resolve(path, 'index.html');
     }
     res.setHeader('Content-Type', types[extname(path)] || 'application/octet-stream');
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'");
     res.end(readFileSync(path));
   } catch { res.writeHead(404); res.end('Not found'); }
 }).listen(43181, '127.0.0.1');
