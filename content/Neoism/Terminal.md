@@ -1,6 +1,6 @@
 # Terminal
 
-Neoism's Ghostty-powered terminal is a native GPU-rendered PTY surface, not a simulated command prompt. By default it keeps commands and their output together in blocks. Interactive shells, alternate-screen applications, mouse reporting, OSC links, job control, and terminal graphics run against a host-side session owned by the workspace daemon.
+Neoism's Ghostty-powered terminal is a native GPU-rendered PTY surface. By default it keeps commands and their output together in blocks. Interactive shells, alternate-screen applications, mouse reporting, OSC links, job control, and terminal graphics run against a host-side session owned by the workspace daemon.
 
 ## Open terminals
 
@@ -64,7 +64,7 @@ Terminal presentation applies to new sessions. Changing it leaves existing runni
 
 ## Working directory
 
-Each terminal tracks its own current directory. `cd` affects that shell only. New project-level content, Explorer, search, and agents remain rooted at the declared workspace directory.
+Each shell tracks its own current directory. The terminal chosen as the workspace directory authority can update the workspace directory; directory changes in other terminals remain local to those shells. Use the directory-authority star to choose which terminal drives the workspace directory.
 
 ## Scrollback and selection
 

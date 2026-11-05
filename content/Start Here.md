@@ -59,6 +59,6 @@ Begin with [[Neoism Agent/The Neoism Agent|The Neoism Agent]], then use the focu
 
 ## Editable introduction, immutable reference
 
-New vaults receive one short, editable `Welcome/Welcome.md` note, not a folder full of handbook pages. Open `Alt+P` → **Open Documentation**, or run `neoism docs`, to read the full local handbook and Scalar API reference in your browser. The application starts its documentation server lazily on `127.0.0.1`; a standalone `neoism docs` server stays running until you press `Ctrl+C` in its terminal. The same documentation is available online at <https://neoism.ai/api/docs/>.
+New vaults receive one short, editable `Welcomes/Welcome.md` note, not a folder full of handbook pages. Open `Alt+P` → **Open Documentation**, or run `neoism docs`, to read the full local handbook and Scalar API reference in your browser. The application starts its documentation server lazily on `127.0.0.1`; a standalone `neoism docs` server stays running until you press `Ctrl+C` in its terminal. The same documentation is available online at <https://neoism.ai/api/docs/>.
 
 The built-in Neoism Docs tool reads a bundled machine-readable copy, so deleting or changing a Welcome note does not remove authoritative documentation available to agents. Older handbook copies already in Notes are preserved; you can keep or remove them yourself.
