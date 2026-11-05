@@ -1,0 +1,107 @@
+Neoism
+======
+
+Neoism is a terminal-first workspace for code, notes, agents, and multiplayer
+editing. The great majority of Neoism — its editor, agent runtime, workspace
+daemon, sync/CRDT layer, notebooks, drawing surfaces, extensions system, and UI
+chrome — is original work by the Neoism contributors, licensed under the MIT
+License (see LICENSE).
+
+This branch uses GPUIX for its frontend and Ghostty for terminal emulation.
+GPUIX native and Solid bindings are distributed under Apache-2.0; their licenses
+are included in desktop bundles as licenses/GPUIX-native.txt and licenses/GPUIX-solid.txt.
+The retained CPU font/paint code, PTY support and configuration code include
+Rio Terminal lineage. Upstream copyright and license notices remain applicable
+where code is retained; source-file headers are authoritative.
+
+Retained renderer and PTY lineage
+---------------------------------
+
+Rio Terminal — MIT License, Copyright (c) 2022-present Raphael Amorim and
+contributors. Retained code in `neoism-paint`, `teletypewriter`, `corcovado`,
+`neoism-terminal-types`, and `neoism-backend` descends from Rio. Neoism's
+virtual-surface and UI code includes first-party extensions. See LICENSE and
+neoism-paint/LICENSE.
+
+Alacritty — Apache-2.0 License, Copyright (c) The Alacritty Project.
+Retained terminal value types preserve their source-file attribution.
+
+Bundled and forked third-party components
+-----------------------------------------
+
+mio 0.6.x (via `corcovado`) — MIT, Copyright (c) 2014 Carl Lerche and the mio
+contributors. See corcovado/ORIGINAL_LICENSE.
+
+wezterm-char-props (via `neoism-grapheme-width`) — MIT, Copyright (c) Wez Furlong.
+
+Ghostty (`neoism-frontend/gpuix/artifacts/ghostty`) — MIT License, Copyright (c)
+Mitchell Hashimoto and contributors. The packaged libghostty-vt includes
+LICENSE.ghostty; the pinned source revision is recorded in neoism-frontend/gpuix/native/ghostty-pin.json.
+
+models.dev provider/model catalog metadata - MIT License, Copyright (c) 2025 models.dev. The bundled catalog snapshot is derived from https://models.dev/api.json; see misc/licenses/models.dev.txt for the upstream license.
+
+OpenCode provider artwork (`neoism-agent/sdk/typescript/packages/gui/src/components/providers/icons.svg`) — MIT, Copyright (c) 2025 opencode. See `neoism-agent/sdk/typescript/packages/gui/src/components/providers/LICENSE.opencode`.
+
+Neoism Browser Control (`neoism-agent/browser-control`) uses Playwright Core
+(Apache-2.0, Microsoft), the MCP TypeScript SDK (MIT, Anthropic), ws (MIT,
+Einar Otto Stangvik and contributors), and Zod (MIT, Colin McDonnell).
+Their license files are included with the runtime's installed npm dependencies.
+
+MCP service artwork — Firecrawl mark from Lobe Icons, MIT, Copyright (c) 2023 LobeHub; Webflow mark from Simple Icons, CC0-1.0. SVG sources, rasterizations, source URLs, and the LobeHub MIT license are in `neoism-frontend/shared/assets/icons/MCP-ARTWORK.md`. Service marks remain trademarks of their respective owners.
+
+Claude provider artwork — Claude starburst from Lobe Icons, MIT, Copyright (c) 2023 LobeHub. Source, atlas-generation notes, and a link to the bundled MIT license are in `neoism-frontend/shared/assets/icons/PROVIDER-ARTWORK.md`. The mark remains a trademark of Anthropic.
+
+
+Terminal icon artwork
+----------------------
+
+Feather SVG icons - Copyright (c) 2013-2023 Cole Bemis. Source: https://github.com/feathericons/feather. The terminal controls bundle selected unmodified icon paths under the MIT License:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Tool Composition parser
+-----------------------
+
+Oxc 0.95.0 (Rust JavaScript parser) - MIT License, Copyright (c) 2024-present VoidZero Inc. & Contributors; Copyright (c) 2023 Boshen. Oxc parses Tool Composition source; Neoism's bounded interpreter and tool dispatcher are first-party Rust code. See misc/licenses/oxc.txt for the upstream license.
+
+
+Optional browser runtime
+------------------------
+
+Servo (experimental `neoism-servo-runtime` worker) — Mozilla Public License 2.0, Copyright The Servo Project Developers. Servo is fetched as an unmodified, pinned upstream dependency and is not linked into the default desktop build. Distributions including the worker must retain Servo and its dependencies' license notices and provide the corresponding MPL-covered source as required by the license. See https://github.com/servo/servo and neoism-frontend/servo-runtime/Cargo.toml for the source revision.
+
+
+Fonts
+-----
+
+Cascadia Code — SIL Open Font License 1.1, Copyright (c) Microsoft Corporation.
+Geist — SIL Open Font License 1.1, Copyright 2024 The Geist Project Authors. Native and web documentation popups embed the unmodified upright variable face; full license: neoism-paint/src/font/resources/Geist/OFL.txt. Browser pages embed a WOFF2 conversion of the website font; full license: neoism-agent/crates/neoism-agent-service-api/src/browser_pages/geist-LICENSE.txt.
+Symbols Nerd Font — MIT License, Copyright (c) Ryan L McIntyre (Nerd Fonts).
+DejaVu fonts (test resources) — Bitstream Vera / DejaVu license (permissive).
+Exo 2 (test resources) — SIL Open Font License 1.1.
+Cinzel Decorative, MedievalSharp, Pirata One, UnifrakturCook — SIL Open Font
+License 1.1. See neoism-frontend/shared/assets/illuminated/fonts/google-ofl.
+Press Start 2P — SIL Open Font License 1.1, Copyright 2012 The Press Start 2P
+Project Authors (cody@zone38.net). See neoism-paint/src/font/resources/PressStart2P/OFL.txt.
+
+
+Pinned compiler compatibility sources
+-------------------------------------
+
+vendor/blaze-compat retains ICU4X icu_collator_data 2.4.0 under the Unicode
+License v3 and turso_core 0.8.3 under the MIT license. Their original notices and
+licenses remain with the sources. Small source changes for the pinned Blaze
+compiler are documented in vendor/blaze-compat/README.md. Desktop bundles include
+their licenses and the unmodified Tantivy dependency's MIT notice under licenses/.
+
+Notes
+-----
+
+This NOTICE is a summary for convenience. Individual source files and vendored
+directories may carry their own LICENSE files or copyright headers, which take
+precedence for those files. Adding or removing Neoism branding does not remove
+upstream copyright and license notices, and vice versa.

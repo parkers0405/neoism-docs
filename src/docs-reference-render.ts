@@ -1,0 +1,14 @@
+import contract from '../reference/openapi.json' with { type: 'json' };
+import { escapeHtml as e } from './docs-render.ts';
+
+type Entry = Record<string, unknown>;
+/** Static, read-only OpenAPI reference. Never sends requests to a visitor's local server. */
+export function renderReference(): string {
+  const data = contract as unknown as { info: Entry; paths: Record<string, Record<string, Entry>>; components: Record<string, unknown> };
+  const code = (value: unknown) => `<pre><code>${e(JSON.stringify(value, null, 2))}</code></pre>`;
+  const operations = Object.entries(data.paths).flatMap(([path, methods]) => Object.entries(methods).filter(([method]) => /^(get|post|put|patch|delete|head|options|trace)$/.test(method)).map(([method, operation]) => {
+    const id = `api-${method}-${path.replace(/[^a-z\d]+/gi, '-')}`;
+    return `<section id="${id}"><h3 tabindex="-1">${e(method.toUpperCase())} ${e(path)}</h3>${operation.summary ? `<p>${e(String(operation.summary))}</p>` : ''}${operation.description ? `<p>${e(String(operation.description))}</p>` : ''}${operation.operationId ? `<p>Operation: <code>${e(String(operation.operationId))}</code></p>` : ''}${operation.parameters ? `<h4>Parameters</h4>${code(operation.parameters)}` : ''}${operation.requestBody ? `<h4>Request body</h4>${code(operation.requestBody)}` : ''}<h4>Responses</h4>${code(operation.responses)}${operation.security ? `<h4>Security</h4>${code(operation.security)}` : ''}</section>`;
+  }));
+  return `<div class="reference-fallback guide-main"><article class="guide-prose"><h1 tabindex="-1">Neoism Agent API reference</h1><p>The versioned HTTP API for Neoism's local agent runtime. This website is a reference, not a hosted agent service. The default local address is <code>http://127.0.0.1:4096</code>.</p><p>Authenticated requests use <code>Authorization: Bearer &lt;token&gt;</code>. Loopback servers may run in trusted mode; configured authentication still applies. Management endpoints require a local operator token. Plugin capabilities can be optional at runtime; discover what your server supports.</p><p>This static reference is derived from the bundled <a href="https://github.com/parkers0405/neoism/blob/main/neoism-agent/openapi/v2.json">versioned OpenAPI contract (v2.json)</a>. Interactive browsing is an optional enhancement. Read the <a href="/api/docs/">product guides</a> for setup and runtime behavior.</p><h2>Contract information</h2>${code(data.info)}<h2>Endpoints</h2>${operations.join('')}<h2>Shared parameters, responses, schemas, and security schemes</h2>${Object.entries(data.components).map(([name, value]) => `<details><summary>${e(name)}</summary>${code(value)}</details>`).join('')}</article></div>`;
+}

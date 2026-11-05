@@ -1,0 +1,16 @@
+Neoism documentation
+====================
+
+Copyright (c) 2026 Parker Settle and Neoism contributors. MIT licensed; see LICENSE.
+
+The handbook and OpenAPI contract originate in parkers0405/neoism; the shared
+renderer was extracted from the Neoism website. Complete upstream MIT licenses
+and the application NOTICE are retained under legal/. The application NOTICE
+describes the larger application, not a claim that its Rust/rendering/runtime
+components ship in this static documentation site.
+
+Geist fonts are bundled from @fontsource-variable/geist under the SIL Open Font
+License 1.1; public/geist-LICENSE.txt accompanies redistributed assets.
+Scalar, marked, DOMPurify, and their transitive dependencies retain their own
+licenses. See legal/npm-licenses.json in a built artifact for package notices.
+No website analytics is embedded in the shared offline documentation.

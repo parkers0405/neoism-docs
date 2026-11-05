@@ -1,0 +1,37 @@
+.scalar-scope, .scalar-scope .light-mode, .scalar-scope .dark-mode {
+  --scalar-font: 'Geist Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --scalar-font-code: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --scalar-color-1: var(--fg);
+  --scalar-color-2: var(--dim);
+  --scalar-color-3: var(--dim);
+  --scalar-color-accent: var(--accent);
+  --scalar-background-1: var(--page);
+  --scalar-background-2: var(--surface);
+  --scalar-background-3: var(--hover);
+  --scalar-background-accent: color-mix(in srgb, var(--accent) 8%, var(--page));
+  --scalar-border-color: var(--border);
+  --scalar-color-green: var(--green);
+  --scalar-color-red: var(--red);
+  --scalar-color-orange: var(--yellow);
+  --scalar-color-blue: var(--blue);
+  --scalar-color-purple: var(--purple);
+  --scalar-radius: var(--radius);
+  --scalar-radius-lg: var(--radius-large);
+  --scalar-header-height: 0px;
+  --scalar-sidebar-width: 270px;
+  --scalar-sidebar-background-1: var(--page);
+  --scalar-sidebar-item-hover-color: var(--fg);
+  --scalar-sidebar-item-hover-background: var(--hover);
+  --scalar-sidebar-item-active-background: color-mix(in srgb, var(--accent) 8%, var(--page));
+  --scalar-sidebar-border-color: var(--border);
+  --scalar-sidebar-color-1: var(--fg);
+  --scalar-sidebar-color-2: var(--dim);
+  --scalar-sidebar-color-active: var(--accent);
+  --scalar-sidebar-search-background: var(--surface);
+  --scalar-sidebar-search-border-color: var(--border);
+  --scalar-sidebar-search-color: var(--dim);
+  min-width: 0;
+}
+.scalar-scope .t-doc__sidebar { top: var(--docs-header-height); height: calc(100dvh - var(--docs-header-height)); }
+.scalar-scope .scalar-api-reference { min-height: calc(100dvh - var(--docs-header-height)); }
+.scalar-scope .section { scroll-margin-top: calc(var(--docs-header-height) + 20px); }

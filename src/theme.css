@@ -1,0 +1,64 @@
+/* Neoism palettes: shared/src/primitives/ide_theme.rs (Pastel Dark)
+   and desktop/src/mashup/seed/retro-95/{theme,pack}.json (Retro 95).
+   Dark is the site default; light remains an explicit opt-in for future work. */
+:root {
+  color-scheme: dark;
+  --page: #000000;
+  --fg: #e8e8e8;
+  --surface: #1a1a1a;
+  --hover: #1f1f1f;
+  --border: #1c1c1c;
+  --muted: #5a5a5a;
+  --dim: #b0b0b0;
+  --accent: #e8e8e8;
+  --red: #ef8891;
+  --green: #9fe8c3;
+  --yellow: #fbdf90;
+  --blue: #99aee5;
+  --purple: #c2a2e3;
+  --cyan: #b5c3ea;
+  --on-accent: #000000;
+  --title-bg: #1a1a1a;
+  --title-fg: #e8e8e8;
+  --radius: 8px;
+  --radius-large: 13px;
+  --radius-pill: 30px;
+  --wordmark-n: var(--fg);
+  --wordmark-e: var(--fg);
+  --wordmark-o: var(--fg);
+  --wordmark-i: var(--fg);
+  --wordmark-s: var(--fg);
+  --wordmark-m: var(--fg);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #dedbd2;
+  --fg: #1a1a1a;
+  --surface: #cdc9bf;
+  --hover: #bfbaae;
+  --border: #8a8578;
+  --muted: #5f5b52;
+  --dim: #3f3c35;
+  --accent: #000080;
+  --red: #c23327;
+  --green: #1e8e3e;
+  --yellow: #a87900;
+  --blue: #2144c7;
+  --purple: #8b2f8f;
+  --cyan: #008080;
+  --on-accent: #ffffff;
+  --title-bg: #000080;
+  --title-fg: #ffffff;
+  --radius: 0px;
+  --radius-large: 0px;
+  --radius-pill: 2px;
+  --wordmark-n: #c23327;
+  --wordmark-e: #1e8e3e;
+  --wordmark-o: #2144c7;
+  --wordmark-i: #e8a90c;
+  --wordmark-s: #c23327;
+  --wordmark-m: #1e8e3e;
+}
+
+::selection { color: var(--on-accent); background: var(--accent); }
