@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "0.7.143-nightly.20261105.2",
+  "version": "0.7.143",
   "pages": [
     {
       "path": "Start Here.md",
@@ -1805,7 +1805,7 @@
     {
       "path": "API/Schemas/McpConfigPatch.md",
       "title": "Schemas: McpConfigPatch",
-      "content": "# Schemas: McpConfigPatch\n\nOpenAPI component #/components/schemas/McpConfigPatch\n\nContract: reference/openapi.json. References such as #/components/schemas/Name resolve to API/Schemas/Name.md.\n\n```json\n{\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"enabled\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"required\": [\n    \"enabled\"\n  ],\n  \"type\": \"object\"\n}\n```\n"
+      "content": "# Schemas: McpConfigPatch\n\nOpenAPI component #/components/schemas/McpConfigPatch\n\nContract: reference/openapi.json. References such as #/components/schemas/Name resolve to API/Schemas/Name.md.\n\n```json\n{\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"enabled\": {\n      \"type\": \"boolean\"\n    },\n    \"scope\": {\n      \"default\": \"owner\",\n      \"description\": \"Global stores an installation enabled preference without changing workspace transports; owner updates the defining source.\",\n      \"enum\": [\n        \"owner\",\n        \"global\"\n      ],\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"enabled\"\n  ],\n  \"type\": \"object\"\n}\n```\n"
     },
     {
       "path": "API/Schemas/McpConfigScope.md",
@@ -2458,6 +2458,6 @@
       "content": "# securitySchemes: BearerAuth\n\nOpenAPI component #/components/securitySchemes/BearerAuth\n\nContract: reference/openapi.json. References such as #/components/schemas/Name resolve to API/Schemas/Name.md.\n\n```json\n{\n  \"bearerFormat\": \"Neoism caller token\",\n  \"scheme\": \"bearer\",\n  \"type\": \"http\"\n}\n```\n"
     }
   ],
-  "openapiSha256": "ef1e2473a9ac2c406d635dc3869d6d9d9674d8be301c36d7755df32f78d7d189",
-  "sourcesSha256": "72b0d18d95f2a328ae7e23f54e8fe2d671053d8378b6e67e7fe5de608c1af477"
+  "openapiSha256": "9e125a81450d385b078d5b0565db13825ed56ede451d7447abef86b36609d6fe",
+  "sourcesSha256": "c95a8cc14615677ff6a21ea75c7a32ef81112462515fdfe913808cfe1b543d91"
 }
