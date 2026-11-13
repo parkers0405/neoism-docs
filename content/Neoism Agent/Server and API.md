@@ -71,6 +71,8 @@ Point any SDK or HTTP client at it. The desktop's embedded server is the same bi
 
 ## Embedding the agent in a product
 
+For direct Rust embedding without a listening socket, use `EmbeddedAgent` and the existing router in memory. See [[Hosting/Embedding]] for lifecycle, streaming, and authorization, and [[Hosting/Overview]] for Docker and object-based hosting options. The network-client workflow below remains available for applications that connect to a separately hosted server.
+
 A backend that drives the agent (a SaaS assistant, a bot, a pipeline) runs one loop per conversation. For local/trusted integrations, `NEOISM_AGENT_AUTH_CONFIG` can restrict token access to tenant directories. For mutually untrusted hosted execution, use the strict shared control plane and separately admitted whole workspace workers described above; directory metadata alone is not execution isolation.
 
 1. Connect with a bearer token. Locally, a configured token can carry `directoryPrefixes` and rate/concurrency quotas. In cloud mode, use the application's host broker to obtain a short-lived credential for the current authorized worker.

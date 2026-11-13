@@ -30,7 +30,7 @@ Global permission defaults live in the `agent.permission` block of `config.json`
 }
 ```
 
-`/yolo` auto-approves prompts for the current session until toggled again. The persistent `dangerouslySkipPermissions` setting is broader. Both are intentionally explicit; neither is needed for normal onboarding.
+Neoism defaults to `dangerouslySkipPermissions: true`, which auto-approves permission prompts while honoring explicit deny rules. The example above disables this default so operations marked `"ask"` require approval. `/yolo` toggles session-only automatic approval.
 
 ## Choose a model and provider
 

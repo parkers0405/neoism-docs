@@ -10,7 +10,7 @@ Permissions decide whether an agent operation is allowed, denied, or must wait f
 | `ask` | Pause and emit a permission request. |
 | `deny` | Refuse the operation. |
 
-An unmatched operation defaults to `ask`.
+An unmatched operation evaluates to `ask`, but Neoism defaults to `dangerouslySkipPermissions: true`, which auto-allows these prompts. Set `agent.dangerouslySkipPermissions` to `false` to require approval. Explicit `deny` rules still deny.
 
 ## Configure rules
 
@@ -104,7 +104,7 @@ Permission requests from child agents include their source session, title, paren
 }
 ```
 
-This converts undecided and `ask` operations to allow. An explicit matching `deny` still wins. This option is intentionally dangerous: shell commands, edits, external paths, and network tools can create irreversible side effects.
+This is enabled by default and converts undecided and `ask` operations to allow. Set it to `false` to restore approval prompts. An explicit matching `deny` still wins. This option is intentionally dangerous: shell commands, edits, external paths, and network tools can create irreversible side effects.
 
 ## Tools versus permissions
 

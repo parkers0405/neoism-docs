@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 const manifest = JSON.parse(readFileSync('manifest.json', 'utf8'));
 const bundle = JSON.parse(readFileSync('bundle/content.json', 'utf8'));
 test('machine contract preserves every legacy guide verbatim with matching H1 and hash', () => {
-  assert.equal(manifest.pages.length, 45);
+  assert.equal(manifest.pages.length, 49);
   assert.equal(bundle.schemaVersion, 1);
   assert.equal(bundle.version, manifest.version);
   for (const page of manifest.pages) {

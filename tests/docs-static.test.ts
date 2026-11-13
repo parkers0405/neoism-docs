@@ -9,10 +9,10 @@ import { renderReference } from '../src/docs-reference-render.ts';
 const manifest = readFileSync('manifest.json', 'utf8');
 const guides = createGuideMetadata(manifest, Object.fromEntries(parseBundledPaths(manifest).map(path => [path, readFileSync(`content/${path}`, 'utf8')])));
 
-test('canonical inventory contains exactly 47 unique routes and metadata, derived from all bundled paths', () => {
-  assert.equal(guides.length, 45); assert.equal(canonicalInventory(guides).length, 47);
-  assert.equal(new Set(guides.map(guideTitle)).size, 45);
-  assert.equal(new Set(guides.map(guideDescription)).size, 45);
+test('canonical inventory includes all handbook and hosting routes with unique metadata', () => {
+  assert.equal(guides.length, 49); assert.equal(canonicalInventory(guides).length, guides.length + 2);
+  assert.equal(new Set(guides.map(guideTitle)).size, guides.length);
+  assert.equal(new Set(guides.map(guideDescription)).size, guides.length);
   for (const guide of guides) assert.doesNotMatch(guideDescription(guide), /Website clarification/);
   assert.match(guideDescription({ path: 'Example.md', title: 'Example', category: 'Start Here', order: 0, body: '# Example\n\nRead [[Neoism Agent/SDK|the SDK]] to start.' }), /Read the SDK to start\./);
   assert.equal(guideRoute('Start Here.md'), '/api/docs/');
@@ -24,7 +24,7 @@ test('explicit DOM renderer produces complete safe articles and canonical links 
   for (const guide of guides) {
     const element = renderHandbook(dom.window.document, guides, guide);
     assert.ok(element.querySelector('.guide-prose h1'));
-    assert.equal(element.querySelectorAll('.guide-nav-link').length, 45);
+    assert.equal(element.querySelectorAll('.guide-nav-link').length, guides.length);
     assert.ok((element.querySelector('.guide-prose')?.textContent?.length || 0) > 300);
     assert.equal(element.querySelectorAll('script, img, iframe').length, 0);
     assert.equal(element.querySelectorAll('a[href^="#guide/"]').length, 0);

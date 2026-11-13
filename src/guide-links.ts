@@ -1,4 +1,4 @@
-export const GUIDE_CATEGORIES = ['Getting Started', 'Neoism', 'Neoism Agent', 'Neoism Daemon'] as const;
+export const GUIDE_CATEGORIES = ['Getting Started', 'Neoism', 'Neoism Agent', 'Hosting', 'Neoism Daemon'] as const;
 export type GuideCategory = typeof GUIDE_CATEGORIES[number] | 'Start Here';
 export interface GuideMetadata {
   path: string;

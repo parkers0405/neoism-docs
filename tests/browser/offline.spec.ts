@@ -2,6 +2,18 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
+test('hosting guides load on desktop and mobile with canonical navigation', async ({ page }) => {
+  for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
+    await page.setViewportSize(viewport);
+    for (const [slug, title] of [['overview', 'Hosting Neoism'], ['embedding', 'Embedding'], ['docker', 'Docker'], ['durable-objects', 'Durable Objects']]) {
+      await page.goto(`/api/docs/guides/hosting/${slug}/`);
+      await expect(page.locator('.guide-prose h1')).toContainText(title);
+      await expect(page.locator('.guide-nav-link[href="/api/docs/guides/hosting/embedding/"]')).toHaveCount(1);
+    }
+    await expect(page.locator('.guide-prose')).toContainText('does not currently supply a Workerd/Wasm engine profile');
+  }
+});
+
 test('packaged handbook, search, legacy links and Scalar work without external requests', async ({ page }) => {
   const external: string[] = [];
   const failures: string[] = [];
